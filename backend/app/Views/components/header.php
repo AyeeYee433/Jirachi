@@ -6,7 +6,7 @@
         <a href="/" class="text-[var(--primary-accent)] hover:text-[var(--primary-hover)] px-4">Home</a>
         <a href="/login" class="text-[var(--primary-accent)] hover:text-[var(--primary-hover)] px-4">Login</a>
         <a href="/signUp" class="text-[var(--primary-accent)] hover:text-[var(--primary-hover)] px-4">Sign In</a>
-        <a href="/mood" class="text-[var(--primary-accent)] hover:text-[var(--primary-hover)] px-4">Moodboard</a>
+        <a href="/dash" class="text-[var(--primary-accent)] hover:text-[var(--primary-hover)] px-4">Moodboard</a>
         <a href="/road" class="text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Roadmap</a>
       </nav>
     </div>
