@@ -40,6 +40,13 @@
 
         body {
             background-color: var(--primary-ghost);
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            min-height: 100vh;
+            color: white;
+            transition: all;
+            transition-duration: 300ms;
         }
         /*
         .swatch {
@@ -49,12 +56,9 @@
             border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
-        /* Button color utilities using design tokens 
+        /* Button color utilities using design tokens
         .btn-sage {
             background: var(--sage-dark);
-            color: white;
-            transition: all;
-            transition-duration: 300ms;
         }
 
         .btn-sage:hover {
