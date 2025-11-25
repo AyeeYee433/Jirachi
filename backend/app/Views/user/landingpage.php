@@ -20,7 +20,7 @@
       alt="Cute Plushies"
       class="shadow-lg mx-auto mb-6 rounded-full w-40 h-40 object-cover">
     <h2 class="mb-4 font-extrabold text-[var(--primary-accent)] text-4xl">Snuggle Up With Gappy's Plushies!</h2>
-    <a href="/shop" class="bg-[var(--primary-accent)] hover:bg-pink-600 shadow px-8 py-3 rounded-full font-semibold text-white transition">
+    <a href="/shop" class="bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] shadow px-8 py-3 rounded-full font-semibold text-white transition">
       Shop Now
     </a>
   </section>

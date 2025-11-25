@@ -9,9 +9,15 @@ $routes->get('/', 'Users::index');
 $routes->get('/moodBoard', 'Users::moodBoard');
 $routes->get('/signUp', 'Users::signUp');
 $routes->get('/login', 'Users::login');
+$routes->get('/cart', 'Users::cart');
+$routes->get('/checkout', 'Users::checkout');
 
-
+$routes->get('/dash', 'Admin::dashBoard');
+$routes->get('/products', 'Admin::products');
+$routes->get('/orders', 'Admin::orders');
 
 $routes->post('/login', 'Auth::login');
 $routes->post('/signup', 'Auth::signup');
 $routes->get('/logout', 'Auth::logout');
+
+
