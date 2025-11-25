@@ -18,12 +18,10 @@ class OrderedItemsTable extends Migration
             'product_id' => [
                 'type' => 'INT',
                 'unsigned' => true,
-                'auto_increment' => true
             ],
             'order_id' => [
                 'type' => 'INT',
                 'unsigned' => true,
-                'auto_increment' => true
             ],
             'quantity' => [
                 'type' => 'INT',
