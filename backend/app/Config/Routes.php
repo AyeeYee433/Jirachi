@@ -13,3 +13,5 @@ $routes->get('/login', 'Users::login');
 $routes->get('/dash', 'Admin::dashBoard');
 $routes->get('/products', 'Admin::products');
 $routes->get('/orders', 'Admin::orders');
+$routes->get('/cart', 'Users::cart');
+$routes->get('/checkout', 'Users::checkout');
