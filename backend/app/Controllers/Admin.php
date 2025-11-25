@@ -10,4 +10,9 @@ class Admin extends BaseController
     {
         return view('admin/dashBoard');
     }
+
+    public function products(): string
+    {
+        return view('admin/products');
+    }
 }

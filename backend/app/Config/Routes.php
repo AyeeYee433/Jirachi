@@ -11,3 +11,4 @@ $routes->get('/signUp', 'Users::signUp');
 $routes->get('/login', 'Users::login');
 
 $routes->get('/dash', 'Admin::dashBoard');
+$routes->get('/products', 'Admin::products');
