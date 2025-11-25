@@ -15,4 +15,8 @@ class Admin extends BaseController
     {
         return view('admin/products');
     }
+    public function orders(): string
+    {
+        return view('admin/orderPage');
+    }
 }
