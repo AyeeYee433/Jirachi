@@ -5,4 +5,5 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Users::moodBoard');
+$routes->get('/', 'Users::index');
+$routes->get('/moodBoard', 'Users::moodBoard');
