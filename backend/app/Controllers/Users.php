@@ -10,9 +10,7 @@ class Users extends BaseController
     {
         return view('user/landingpage');
     }
-}
-class Users extends BaseController
-{
+
     public function moodBoard(): string
     {
         return view('user/moodboard');

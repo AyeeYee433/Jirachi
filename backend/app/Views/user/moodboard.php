@@ -1,7 +1,7 @@
 <!-- Head -->
 <?= view("components/head") ?>
 
-<body class="flex flex-col bg-white min-h-screen">
+<body>
 <!-- Header -->
 <header class="bg-[var(--primary)] shadow text-white">
     <div class="flex justify-between items-center mx-auto px-6 py-4 max-w-7xl">
