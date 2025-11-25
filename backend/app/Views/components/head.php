@@ -22,9 +22,11 @@
     <!-- Global base typography -->
     <style>
         :root {
-            --primary: #FCE798;
-            --primary-accent: #23E7F3;
+            --primary: #ffe383;
+            --primary-accent: #f66948;
+            --primary-accent2: #7ecaa4;
             --primary-ghost: #FEFAFA;
+            --primary-hover: ##ffb300;
         }
         .font-inter {
             font-family: 'Inter', sans-serif;
