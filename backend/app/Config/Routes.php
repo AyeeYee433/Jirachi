@@ -12,7 +12,7 @@ $routes->get('/login', 'Users::login');
 $routes->get('/cart', 'Users::cart');
 $routes->get('/checkout', 'Users::checkout');
 
-$routes->get('/dash', 'Admin::dashBoard');
+$routes->get('/dashboard', 'Admin::dashBoard');
 $routes->get('/products', 'Admin::products');
 $routes->get('/orders', 'Admin::orders');
 

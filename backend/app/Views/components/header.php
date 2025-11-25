@@ -11,11 +11,11 @@
         <a href="/cart" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Cart</a>
       <?php else: ?>
         <a href="/login" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Login</a>
-        <a href="/signUp" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Sign In</a>
+        <a href="/signUp" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Sign Up</a>
       <?php endif; ?>
       <a href="/" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Home</a>
 
-      <a href="/mood" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Moodboard</a>
+      <a href="/moodBoard" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Moodboard</a>
       <a href="/road" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Roadmap</a>
     </nav>
   </div>

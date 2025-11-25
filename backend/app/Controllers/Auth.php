@@ -84,11 +84,12 @@ class Auth extends BaseController
 
         $data = [
             'username'        => $post['username'],
+            'first_name'      => $post['first_name'],
+            'last_name'       => $post['last_name'],
+            'address'         => $post['address'],
             'email'           => $post['email'],
             'password_hash'   => password_hash($post['password'], PASSWORD_DEFAULT),
-            'type'            => $post['type'],
-            'account_status'  => 1,
-            'email_activated' => 0
+            'type'            => 'user'
         ];
 
         $inserted = $userModel->insert($data);
