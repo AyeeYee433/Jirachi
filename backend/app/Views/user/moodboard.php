@@ -1,6 +1,5 @@
 <!-- Head -->
 <?= view("components/head") ?>
-
 <body>
 <!-- Header -->
 <header class="bg-[var(--primary)] shadow text-white">
