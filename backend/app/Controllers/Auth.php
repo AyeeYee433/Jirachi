@@ -55,7 +55,8 @@ class Auth extends BaseController
         return redirect()->to('/');
     }
 
-    public function logout(){
+    public function logout()
+    {
         $errors = $errors ?? [];
         $old = $old ?? [];
         session()->destroy();
@@ -64,7 +65,8 @@ class Auth extends BaseController
         return redirect()->to('/');
     }
 
-    public function signup(){
+    public function signup()
+    {
         $session = session();
         $request = service('request');
         $validation = \Config\Services::validation();
@@ -97,6 +99,42 @@ class Auth extends BaseController
         if ($inserted) {
             $session->setFlashdata('success', 'Account created successfully! You can now log in.');
             return redirect()->to('/login');
+        } else {
+            $session->setFlashdata('error', 'Something went wrong. Please try again.');
+            return redirect()->back()->withInput();
+        }
+    }
+    public function adProd()
+    {
+        // id, name, desc, img, price, stock
+        $session = session();
+        $request = service('request');
+        $validation = \Config\Services::validation();
+
+        $validation->setRule('name', 'name', 'required|is_unique[ProductsTable.name]');
+        $validation->setRule('price', 'price', 'required');
+        $validation->setRule('stock', 'stock', 'required');
+
+        $post = $request->getPost();
+
+        if (! $validation->run($post)) {
+            $session->setFlashdata('errors', $validation->getErrors());
+            $session->setFlashdata('old', $post);
+            return redirect()->back()->withInput();
+        }
+        $userModel = new \App\Models\UserModel();
+
+        $data = [
+            'name'      => $post['name'],
+            'img'       => $post['img'],
+            'price'     => $post['price'],
+            'stock'     => $post['stock'],
+        ];
+
+        $inserted = $userModel->insert($data);
+        if ($inserted) {
+            $session->setFlashdata('success', 'Account created successfully! You can now log in.');
+            return redirect()->to('/dash');
         } else {
             $session->setFlashdata('error', 'Something went wrong. Please try again.');
             return redirect()->back()->withInput();
