@@ -23,4 +23,12 @@ class Users extends BaseController
     {
         return view('user/login');
     }
+    public function cart(): string
+    {
+        return view('user/cart');
+    }
+    public function checkout(): string
+    {
+        return view('user/checkout');
+    }
 }
