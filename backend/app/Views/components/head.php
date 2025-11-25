@@ -26,7 +26,8 @@
             --primary-accent: #f66948;
             --primary-accent2: #7ecaa4;
             --primary-ghost: #FEFAFA;
-            --primary-hover: ##ffb300;
+            --primary-hover: #e63a13ff;
+            --primary-hover2: ##ffb300;
         }
         .font-inter {
             font-family: 'Inter', sans-serif;

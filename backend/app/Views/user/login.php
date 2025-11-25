@@ -32,37 +32,17 @@
         <div class="flex flex-col items-center mb-6">
             <img src="https://dendenotakushop.com/cdn/shop/files/KuripanPlushieMatikanetannhauserUmamusume-PrettyDerby_0.jpg?v=1724820492" alt="Cute Plushies" class="mx-auto rounded-full shadow-lg w-40 h-40 mb-6 object-cover">
             <h1 class="text-2xl font-bold text-[var(--primary-accent)] mb-1">Yokoso User!</h1>
-            <p class="text-sm text-gray-500">Sign in today!</p>
+            <p class="text-sm text-gray-500">Welcome Back!</p>
         </div>
         <?php if (!empty($error)): ?>
             <div class="mb-4 px-4 py-2 bg-pink-100 border border-pink-300 text-pink-700 rounded">
                 <?= esc($error) ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= site_url('signUp') ?>" class="space-y-5" novalidate>
-        <div>
-                <label for="first_name" class="block text-sm font-medium text-[var(--primary-accent)]">First Name</label>
-                <input type="first_name" id="first_name" name="first_name" required
-                    class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
-            </div>
-            <div>
-                <label for="last_name" class="block text-sm font-medium text-[var(--primary-accent)]">Last Name</label>
-                <input type="last_name" id="last_name" name="last_name" required
-                    class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
-            </div>
-          <div>
-                <label for="user" class="block text-sm font-medium text-[var(--primary-accent)]">Username</label>
-                <input type="user" id="user" name="user" required
-                    class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
-            </div>
+        <form method="post" action="<?= site_url('login') ?>" class="space-y-5" novalidate>
             <div>
                 <label for="email" class="block text-sm font-medium text-[var(--primary-accent)]">Email</label>
                 <input type="email" id="email" name="email" required
-                    class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
-            </div>
-            <div>
-                <label for="address" class="block text-sm font-medium text-[var(--primary-accent)]">Address</label>
-                <input type="address" id="address" name="address" required
                     class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
             </div>
             <div>
@@ -70,19 +50,14 @@
                 <input type="password" id="password" name="password" required
                     class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
             </div>
-            <div>
-                <label for="confirm" class="block text-sm font-medium text-[var(--primary-accent)]">Confirm Password</label>
-                <input type="password" id="confirm" name="confirm" required
-                    class="mt-1 block w-full rounded-lg border-pink-300 focus:border-pink-500 focus:ring-pink-500 text-gray-700 px-4 py-2 bg-[var(--primary)]" />
-            </div>
             <button type="submit"
                 class="w-full py-2 px-4 rounded-lg bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] text-white font-semibold shadow transition">
-                Sign up
+                Login
             </button>
         </form>
         <div class="mt-6 text-center">
-            <a href="/login" class="text-blue-500 hover:underline text-sm">
-                Already have an account? Log In.
+            <a href="/signUp" class="text-blue-500 hover:underline text-sm">
+                No Account Yet? Create One Here!
             </a>
         </div>
     </div>
