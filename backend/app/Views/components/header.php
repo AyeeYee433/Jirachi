@@ -7,7 +7,7 @@
     <h1 class="font-bold text-[var(--primary-accent)] text-3xl">Gappy's Plushies</h1>
     <nav>
       <?php if ($session->has('user')): ?>
-        <a href="#" role="button" onclick="confrimLogout()" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Logout</a>
+        <a href="#" role="button" onclick="confirmLogout(event)" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Logout</a>
         <a href="/cart" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Cart</a>
       <?php else: ?>
         <a href="/login" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Login</a>
