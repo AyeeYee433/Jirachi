@@ -6,10 +6,10 @@ use CodeIgniter\Model;
 
 class ProductModel extends Model
 {
-    protected $table            = 'userTable';
+    protected $table            = 'Products';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = '\App\\Entities\\User';
+    protected $returnType       = '\App\\Entities\\Product';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['id', 'name', 'description', 'img', 'price', 'stock'];

@@ -29,38 +29,33 @@
   <section class="mx-auto px-8 py-12 container">
     <h3 class="mb-6 font-bold text-[var(--primary-accent)] text-2xl text-center">Featured Plushies</h3>
     <div class="gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-      <?php
-      // Example featured items array
-      $featured = [
-        ['name' => 'miku', 'img' => 'https://preview.redd.it/someone-please-tell-me-the-name-or-brand-of-these-dumb-baby-v0-mdyzk434thyc1.jpeg?width=640&crop=smart&auto=webp&s=ff622154f2ed8a079928df3eb97e7b187996df3b', 'desc' => 'Miku Dayo Miku Dayo Miku Dayo.', 'price' => 90],
-        ['name' => 'kasane teto', 'img' => 'https://ae01.alicdn.com/kf/Se391c4a6ec514b95aede38073aeacae68.jpg', 'desc' => 'Teto Word of the day.'],
-        ['name' => 'astolfo', 'img' => 'https://images.steamusercontent.com/ugc/1009311134773801268/E203DA9938236DBFAC6A286313092C352BA74A2F/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true', 'desc' => 'Soft, squishy, and maybe a little haunted.', 'price' => 67],
-      ];
-      foreach ($featured as $item): ?>
+      <?php foreach ($products as $product): ?>
         <div class="flex flex-col items-center bg-[var(--primary)] shadow-lg p-4 border border-gray-100 rounded-lg max-w-sm overflow-hidden">
-                    <img src="<?= esc($item['img'] ?? 'path/to/image.jpg') ?>" alt="<?= esc($item['name'] ?? 'Image') ?>" class="mx-auto rounded-md w-[90%] object-cover aspect-square">
+            <img src="<?= esc($product->img ?? 'https://dendenotakushop.com/cdn/shop/files/KuripanPlushieMatikanetannhauserUmamusume-PrettyDerby_0.jpg?v=1724820492') ?>" 
+                alt="<?= esc($product->name ?? 'Product') ?>" 
+                class="mx-auto rounded-md w-[90%] object-cover aspect-square">
 
-                    <div class="flex flex-col items-start mt-4 w-full">
-                        <h3 class="font-montserrat font-bold text-gray-900 text-lg"><?= esc($item['name'] ?? 'Name') ?></h3>
+            <div class="flex flex-col items-start mt-4 w-full">
+                <h3 class="font-montserrat font-bold text-gray-900 text-lg"><?= esc($product->name) ?></h3>
 
-                        <?php if (isset($price)) : ?>
-                            <p class="mt-2 font-inter font-semibold text-gray-900">$<?=  esc(item['price'] ?? '0.00') ?></p>
-                        <?php endif; ?>
+                <?php if (isset($product->price)): ?>
+                    <p class="mt-2 font-inter font-semibold text-gray-900">$<?= number_format($product->price, 2) ?></p>
+                <?php endif; ?>
 
-                        <p class="mt-1 font-inter text-gray-700 text-sm"><?=  esc($item['desc'] ?? 'Description') ?></p>
+                <p class="mt-1 font-inter text-gray-700 text-sm"><?= esc($product->description) ?></p>
 
-                        <div class="flex justify-center mt-3 w-full">
-                            <div class="flex flex-col items-center">
-                                <button type="button"
-                                    class="bg-[var(--primary-accent)] hover:bg-white px-5 py-2.5 border-[var(--primary-accent)] border-2 rounded-md focus:outline-none focus:ring-[var(--primary-accent)] focus:ring-2 focus:ring-offset-2 font-montserrat font-medium text-white hover:text-[var(--primary-accent)] active:scale-95 transition">
-                                    Add to cart
-                                </button>
-                                <span class="mt-2 text-gray-700 text-sm">Secondary</span>
-                            </div>
-                        </div>
+                <div class="flex justify-center mt-3 w-full">
+                    <div class="flex flex-col items-center">
+                        <button type="button"
+                            class="bg-[var(--primary-accent)] hover:bg-white px-5 py-2.5 border-[var(--primary-accent)] border-2 rounded-md focus:outline-none focus:ring-[var(--primary-accent)] focus:ring-2 focus:ring-offset-2 font-montserrat font-medium text-white hover:text-[var(--primary-accent)] active:scale-95 transition">
+                            Add to cart
+                        </button>
+                        <span class="mt-2 text-gray-700 text-sm">Secondary</span>
                     </div>
                 </div>
-    <?php endforeach; ?>
+            </div>
+        </div>
+      <?php endforeach; ?>
     </div>
   </section>
 
