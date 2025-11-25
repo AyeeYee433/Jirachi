@@ -12,10 +12,10 @@ class ProductsSeeder extends Seeder
         $password = password_hash('samplepass', PASSWORD_DEFAULT);
 
         $dataEntry = [
-            [   // Product ID #1 
+            [   // Product ID #1
                 'name' => 'mambo',
                 'description' => 'elcondor lost birb',
-                'img' => '/',
+                'img' => 'https://dendenotakushop.com/cdn/shop/files/KuripanPlushieMatikanetannhauserUmamusume-PrettyDerby_0.jpg?v=1724820492',
                 'price' => 19.99,
                 'stock' => 100,
                 'created_at' => $now,

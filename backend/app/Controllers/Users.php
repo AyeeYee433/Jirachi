@@ -3,12 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ProductModel;
 
 class Users extends BaseController
 {
     public function index(): string
     {
-        return view('user/landingpage');
+        $productModel = new ProductModel();
+        $products = $productModel->findAll();
+        return view('user/landingpage', ['products'=> $products]);
     }
 
     public function moodBoard(): string
