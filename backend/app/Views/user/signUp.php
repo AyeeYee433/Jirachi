@@ -39,20 +39,30 @@
                 <?= esc($error) ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="<?= site_url('signUp') ?>" class="space-y-5" novalidate>
-        <div>
+        <form method="post" action="<?= site_url('signup') ?>" class="space-y-5" novalidate>
+            <?php $errors = session()->getFlashdata('errors'); ?>
+            <?php if (!empty($errors)): ?>
+                <div class="bg-pink-100 mb-4 px-4 py-2 border border-pink-300 rounded text-pink-700">
+                    <ul class="text-sm list-disc list-inside">
+                    <?php foreach ($errors as $err): ?>
+                        <li><?= esc($err) ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+            <div>
                 <label for="first_name" class="block font-medium text-[var(--primary-accent)] text-sm">First Name</label>
-                <input type="first_name" id="first_name" name="first_name" required
+                <input type="text" id="first_name" name="first_name" required
                     class="block bg-[var(--primary)] mt-1 px-4 py-2 border-pink-300 focus:border-pink-500 rounded-lg focus:ring-pink-500 w-full text-gray-700" />
             </div>
             <div>
                 <label for="last_name" class="block font-medium text-[var(--primary-accent)] text-sm">Last Name</label>
-                <input type="last_name" id="last_name" name="last_name" required
+                <input type="text" id="last_name" name="last_name" required
                     class="block bg-[var(--primary)] mt-1 px-4 py-2 border-pink-300 focus:border-pink-500 rounded-lg focus:ring-pink-500 w-full text-gray-700" />
             </div>
             <div>
                 <label for="user" class="block font-medium text-[var(--primary-accent)] text-sm">Username</label>
-                <input type="username" id="username" name="username" required
+                <input type="text" id="username" name="username" required
                     class="block bg-[var(--primary)] mt-1 px-4 py-2 border-pink-300 focus:border-pink-500 rounded-lg focus:ring-pink-500 w-full text-gray-700" />
             </div>
             <div>
@@ -62,7 +72,7 @@
             </div>
             <div>
                 <label for="address" class="block font-medium text-[var(--primary-accent)] text-sm">Address</label>
-                <input type="address" id="address" name="address" required
+                <input type="text" id="address" name="address" required
                     class="block bg-[var(--primary)] mt-1 px-4 py-2 border-pink-300 focus:border-pink-500 rounded-lg focus:ring-pink-500 w-full text-gray-700" />
             </div>
             <div>
@@ -72,7 +82,7 @@
             </div>
             <div>
                 <label for="confirm" class="block font-medium text-[var(--primary-accent)] text-sm">Confirm Password</label>
-                <input type="password" id="confirm" name="confirm" required
+                <input type="password" id="confirm" name="confirmPassword" required
                     class="block bg-[var(--primary)] mt-1 px-4 py-2 border-pink-300 focus:border-pink-500 rounded-lg focus:ring-pink-500 w-full text-gray-700" />
             </div>
             <button type="submit"
