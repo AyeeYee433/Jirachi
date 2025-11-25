@@ -12,7 +12,7 @@
         <div class="flex justify-between items-center mb-6">
             <div>
                 <h1 class="font-bold text-gray-900 text-2xl">Manage Orders</h1>
-                <p class="text-gray-600 text-sm">Search, filter, and manage user orders.</p>
+                <p class="text-gray-600 text-sm">Cancel,Ship Out, Delivered.</p>
             </div>
 
             <div class="flex items-center gap-3">
@@ -31,7 +31,6 @@
                         <option value="completed" <?= (isset($_GET['status']) && $_GET['status'] === 'completed') ? 'selected' : '' ?>>Completed</option>
                         <option value="cancelled" <?= (isset($_GET['status']) && $_GET['status'] === 'cancelled') ? 'selected' : '' ?>>Cancelled</option>
                     </select>
-                    <button type="submit" class="inline-flex items-center bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] shadow-sm px-4 py-2 rounded-md text-white text-sm">Filter</button>
                 </form>
             </div>
         </div>
@@ -53,7 +52,6 @@
                             $data = [
                                 ["title" => "Order ID"],
                                 ["title" => "Customer Name"],
-                                ["title" => "Items Name"],
                                 ["title" => "Status"],
                                 ["title" => "Date"],
                                 ["title" => "Action"],
@@ -65,15 +63,7 @@
                         
                         <?php endforeach; ?>
 
-                        <!--<tr>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left" id="order_id">Order ID</th>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left">Customer</th>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left">Items</th>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left">Total</th>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left">Status</th>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left">Date</th>
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-right">Actions</th>
-                        </tr>-->
+                        
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <?php if (empty($orders)): ?>
@@ -87,16 +77,16 @@
                                 <?php
                                     $status = isset($order['status']) ? $order['status'] : 'unknown';
                                     switch ($status) {
-                                        case 'pending':
+                                        case 'Pending':
                                             $badgeClass = 'bg-yellow-100 text-yellow-800';
                                             break;
-                                        case 'processing':
+                                        case 'Shipped Out':
                                             $badgeClass = 'bg-indigo-100 text-indigo-800';
                                             break;
-                                        case 'completed':
+                                        case 'Delivered':
                                             $badgeClass = 'bg-green-100 text-green-800';
                                             break;
-                                        case 'cancelled':
+                                        case 'Cancelled':
                                             $badgeClass = 'bg-red-100 text-red-800';
                                             break;
                                         default:
