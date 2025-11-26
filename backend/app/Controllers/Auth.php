@@ -167,13 +167,30 @@ class Auth extends BaseController
             'product_id'      => $post['product_id'],
             'quantity'        => $post['quantity']
         ];
-        $inserted = $cartModel->insert($data);
 
-        if ($inserted) {
-            return redirect()->to('/cart');
+        $existing = $cartModel
+        ->where('customer_id', $data['customer_id'])
+        ->where('product_id', $data['product_id'])
+        ->first();
+
+        if ($existing) {
+        // Add the new quantity to the existing quantity
+        $newQty = $existing->quantity + $post['quantity'];
+
+        $cartModel->update($existing->id, [
+            'quantity' => $newQty
+        ]);
+
         } else {
-            $session->setFlashdata('error', 'Something went wrong. Please try again.');
-            return redirect()->back()->withInput();
+            // Insert a new cart row
+            $cartModel->insert([
+                'customer_id' => $customerId,
+                'product_id'  => $productId,
+                'quantity'    => $quantity
+            ]);
         }
+
+        return redirect()->to('/cart');
+
     }
 }
