@@ -21,3 +21,5 @@ $routes->post('/login', 'Auth::login');
 $routes->post('/signup', 'Auth::signup');
 $routes->post('/adProd', 'Auth::adProd');
 $routes->get('/logout', 'Auth::logout');
+
+$routes->post('/productPage', 'Auth::productPage');
