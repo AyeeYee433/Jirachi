@@ -1,10 +1,6 @@
 <?= view("components/head") ?>
 <?= view("components/header") ?>
 
-<?php
-$cart = session()->get('cart') ?? [];
-?>
-
 <body class="bg-gray-50">
 
     <section class="mx-auto px-6 py-16 container">
@@ -13,7 +9,7 @@ $cart = session()->get('cart') ?? [];
             Shopping Cart
         </h2>
 
-        <?php if (empty($cart)): ?>
+        <?php if (empty($OrderedItems)): ?>
 
             <div class="py-20 text-center">
                 <p class="mb-4 text-gray-600 text-lg">Your cart is empty</p>
@@ -31,7 +27,7 @@ $cart = session()->get('cart') ?? [];
 
             <div class="space-y-6">
 
-                <?php foreach ($cart as $item): ?>
+                <?php foreach ($OrderedItems as $item): ?>
                     <div class="flex items-center bg-white shadow p-4 border border-gray-200 rounded-lg">
 
                         <!-- Thumbnail -->

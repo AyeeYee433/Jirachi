@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
+use App\Models\OrderedItemsModel;
 
 class Users extends BaseController
 {
@@ -28,9 +29,14 @@ class Users extends BaseController
     }
     public function cart(): string
     {
-        return view('user/cart');
+        $OrderedItemsModel = new OrderedItemsModel();
+        $ProductModel = new ProductModel();
+        $OrderedItems = $OrderedItemsModel->findAll();
+        $Product = $ProductModel->findAll();
+        return view('user/cart', ['cart'=> $OrderedItems, "products"=> $Product]);
+
     }
-    public function checkout(): string
+        public function checkout(): string
     {
         return view('user/checkout');
     }
