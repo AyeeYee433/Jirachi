@@ -5,14 +5,14 @@
 <?= view("components/head") ?>
 
 <body class="flex flex-col bg-white min-h-screen">
-<!-- Header -->
+    <!-- Header -->
     <?= view("components/header") ?>
 
     <main class="mx-auto mt-6 px-4 sm:px-6 lg:px-8 pb-12 w-full max-w-7xl">
         <div class="flex justify-between items-center mb-6">
             <div>
                 <h1 class="font-bold text-gray-900 text-2xl">Manage Orders</h1>
-                <p class="text-gray-600 text-sm">Cancel,Ship Out, Delivered.</p>
+                <p class="text-gray-600 text-sm">Cancel it, Ship it out, Deliver it.</p>
             </div>
 
             <div class="flex items-center gap-3">
@@ -22,8 +22,7 @@
                         name="q"
                         value="<?= isset($_GET['q']) ? esc($_GET['q']) : '' ?>"
                         placeholder="Search orders or users..."
-                        class="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-64 text-sm"
-                    />
+                        class="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-64 text-sm" />
                     <select name="status" class="px-2 py-2 border rounded-md text-sm">
                         <option value="">All statuses</option>
                         <option value="pending" <?= (isset($_GET['status']) && $_GET['status'] === 'pending') ? 'selected' : '' ?>>Pending</option>
@@ -49,21 +48,22 @@
                 <table class="divide-y divide-gray-200 min-w-full">
                     <thead class="bg-gray-50">
                         <?php
-                            $data = [
-                                ["title" => "Order ID"],
-                                ["title" => "Customer Name"],
-                                ["title" => "Status"],
-                                ["title" => "Date"],
-                                ["title" => "Action"],
-                            ];
+                        $lname = '';
+                        $fname = '';
+                        $data = [
+                            ["title" => "Order ID"],
+                            ["title" => "Last Name"],
+                            ["title" => "First Name"],
+                            ["title" => "Ordered Date"],
+                            ["title" => "Status"],
+                            ["title" => "Delivered Date"],
+                            ["title" => "Actions"]
+                        ];
                         ?>
-                        <?php foreach($data as $title): ?>
-                        
-                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left" id = <?= esc(str_replace(' ', '_', strtolower($title["title"])))?>> <?= esc($title["title"]) ?></th>
-                        
+                        <?php foreach ($data as $title): ?>
+                            <th class="px-4 py-2 font-medium text-gray-500 text-xs text-left" id=<?= esc(str_replace(' ', '_', strtolower($title["title"]))) ?>> <?= esc($title["title"]) ?></th>
                         <?php endforeach; ?>
 
-                        
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <?php if (empty($orders)): ?>
@@ -74,47 +74,53 @@
                             </tr>
                         <?php else: ?>
                             <?php foreach ($orders as $order): ?>
-                                <?php
-                                    $status = isset($order['status']) ? $order['status'] : 'unknown';
-                                    switch ($status) {
-                                        case 'Pending':
-                                            $badgeClass = 'bg-yellow-100 text-yellow-800';
-                                            break;
-                                        case 'Shipped Out':
-                                            $badgeClass = 'bg-indigo-100 text-indigo-800';
-                                            break;
-                                        case 'Delivered':
-                                            $badgeClass = 'bg-green-100 text-green-800';
-                                            break;
-                                        case 'Cancelled':
-                                            $badgeClass = 'bg-red-100 text-red-800';
-                                            break;
-                                        default:
-                                            $badgeClass = 'bg-gray-100 text-gray-800';
+                                <?php foreach ($user as $u):
+                                    if ($u->id == $order->id) {
+                                        $lname = $u->last_name;
+                                        $fname = $u->first_name;
                                     }
+
+                                endforeach; ?>
+                                <?php
+                                $status = isset($order->status) ? $order->status : 'pending';
+                                switch ($status) {
+                                    case 'pending':
+                                        $badgeClass = 'bg-yellow-100 text-yellow-800';
+                                        break;
+                                    case 'cancelled':
+                                        $badgeClass = 'bg-indigo-100 text-indigo-800';
+                                        break;
+                                    case 'delivered':
+                                        $badgeClass = 'bg-green-100 text-green-800';
+                                        break;
+                                    default:
+                                        $badgeClass = 'bg-gray-100 text-gray-800';
+                                }
                                 ?>
                                 <tr>
-                                    <td class="px-4 py-3 text-gray-700 text-sm"><?= esc($order['id'] ?? '-') ?></td>
-                                    <td class="px-4 py-3 text-gray-700 text-sm">
-                                        <?= esc($order['user_name'] ?? $order['user_email'] ?? '-') ?>
+                                    <td class="px-4 py-3 text-gray-700 text-sm"><?= esc($order->id ?? '-') ?></td>
+                                    <td class="px-4 py-3 text-gray-700 text-sm"> <!-- Last Name -->
+                                        <?= esc($lname) ?>
                                     </td>
-                                    <td class="px-4 py-3 text-gray-700 text-sm"><?= esc($order['items_count'] ?? '-') ?></td>
-                                    <td class="px-4 py-3 text-gray-700 text-sm">₱ <?= isset($order['total']) ? number_format($order['total'], 2) : '-' ?></td>
+                                    <td class="px-4 py-3 text-gray-700 text-sm"> <!-- First Name -->
+                                        <?= esc($fname) ?>
+                                    </td>
+                                    <td class="px-4 py-3 text-gray-700 text-sm"><?= esc($order->created_at ?? '-') ?></td>
                                     <td class="px-4 py-3">
                                         <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium <?= $badgeClass ?>">
                                             <?= ucfirst(esc($status)) ?>
                                         </span>
                                     </td>
                                     <td class="px-4 py-3 text-gray-500 text-sm">
-                                        <?= isset($order['created_at']) ? esc(date('Y-m-d H:i', strtotime($order['created_at']))) : '-' ?>
+                                        <?= isset($order->created_at) ? esc(date('Y-m-d H:i', strtotime($order->deleted_at))) : '-' ?>
                                     </td>
-                                    <td class="px-4 py-3 text-sm text-right">
+                                    <td class="px-4 py-3 text-sm text-left">
                                         <div class="inline-flex items-center gap-2">
-                                            <a href="/admin/orders/<?= urlencode($order['id']) ?>" class="text-indigo-600 hover:underline">View</a>
-                                            <a href="/admin/orders/<?= urlencode($order['id']) ?>/edit" class="text-yellow-600 hover:underline">Edit</a>
+                                            <a href="/admin/orders/<?= urlencode($order->id) ?>" class="text-indigo-600 hover:underline">View</a>
+                                            <a href="/admin/orders/<?= urlencode($order->id) ?>/edit" class="text-yellow-600 hover:underline">Edit</a>
 
                                             <?php if ($status !== 'completed' && $status !== 'cancelled'): ?>
-                                                <form method="post" action="/admin/orders/<?= urlencode($order['id']) ?>/cancel" onsubmit="return confirm('Are you sure you want to cancel order <?= esc($order['id']) ?>?');" class="inline-block">
+                                                <form method="post" action="/admin/orders/<?= urlencode($order->id) ?>/cancel" onsubmit="return confirm('Are you sure you want to cancel order <?= esc($order->id) ?>?');" class="inline-block">
                                                     <?= csrf_field() ?>
                                                     <button type="submit" class="text-red-600 hover:underline">Cancel</button>
                                                 </form>
