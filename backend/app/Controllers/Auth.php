@@ -123,7 +123,6 @@ class Auth extends BaseController
             $session->setFlashdata('old', $post);
             return redirect()->back()->withInput();
         }
-        $cartModel = new \App\Models\CartModel();
 
         $data = [
             'name'      => $post['name'],
@@ -161,9 +160,10 @@ class Auth extends BaseController
         $session = session();
         $request = service('request');
         $post = $request->getPost();
+        $cartModel = new \App\Models\CartModel();
 
         $data = [
-            'customer_id'     => $session["id"],
+            'customer_id'     => $session->get('user')['id'],
             'product_id'      => $post['product_id'],
             'quantity'        => $post['quantity']
         ];
