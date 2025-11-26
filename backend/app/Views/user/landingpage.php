@@ -30,7 +30,7 @@
     <h3 class="mb-6 font-bold text-[var(--primary-accent)] text-2xl text-center">Featured Plushies</h3>
     <div class="gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
       <?php foreach ($products as $product): ?>
-        <?= view("components/cards/cardPrimary", ["img" => $product->img, "name" => $product->name, "price" => $product->price, "desc" => $product->description, "buttonType" => "submit"]) ?>
+        <?= view("components/cards/cardPrimary", ["id" => $product->id, "img" => $product->img, "name" => $product->name, "price" => $product->price, "desc" => $product->description, "buttonType" => "submit"]) ?>
       <?php endforeach; ?>
     </div>
   </section>
