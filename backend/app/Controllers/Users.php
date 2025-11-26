@@ -11,7 +11,7 @@ class Users extends BaseController
     {
         $productModel = new ProductModel();
         $products = $productModel->findAll();
-        return view('user/landingpage', ['products'=> $products]);
+        return view('user/landingpage', ['products' => $products]);
     }
 
     public function moodBoard(): string
@@ -33,5 +33,9 @@ class Users extends BaseController
     public function checkout(): string
     {
         return view('user/checkout');
+    }
+    public function productPage(): string
+    {
+        return view('user/productPage');
     }
 }
