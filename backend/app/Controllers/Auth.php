@@ -193,4 +193,36 @@ class Auth extends BaseController
         return redirect()->to('/cart');
 
     }
+
+    public function updateQuantity()
+    {
+        $session = session();
+        $userId = $session->get('user')['id'] ?? null;
+
+        if (!$userId) {
+            return redirect()->to('/login');
+        }
+
+        $post = $this->request->getPost();
+        $productId = $post['product_id'];
+        $change = (int) $post['change']; // -1 or 1
+
+        $cartModel = new \App\Models\CartModel();
+
+        $cartItem = $cartModel
+            ->where('customer_id', $userId)
+            ->where('product_id', $productId)
+            ->first();
+
+        if (!$cartItem) {
+            return redirect()->back();
+        }
+
+        $currentQty = $cartItem->quantity ?? 0;
+        $quantity = max(1, $currentQty + $change);
+
+        $cartModel->update($cartItem->id, ['quantity' => $quantity]);
+
+        return redirect()->back();
+    }
 }
