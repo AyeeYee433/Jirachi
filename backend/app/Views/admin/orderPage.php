@@ -8,6 +8,8 @@
     <!-- Header -->
     <?= view("components/header") ?>
 
+    <?= view("components/adminPanel") ?>
+
     <main class="mx-auto mt-6 px-4 sm:px-6 lg:px-8 pb-12 w-full max-w-7xl">
         <div class="flex justify-between items-center mb-6">
             <div>
