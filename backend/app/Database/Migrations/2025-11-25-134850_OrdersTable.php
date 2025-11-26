@@ -8,7 +8,7 @@ class OrdersTable extends Migration
 {
     public function up()
     {
-        // id, customer_id, order_date, delivered_date, delivery_address, payment_method [card, e-wallet,]
+        // id, customer_id, order_date, delivered_date, delivery_address, payment_method [card, e-wallet], order_status
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -39,6 +39,12 @@ class OrdersTable extends Migration
                 'constraint' => 20,
                 'default' => 'e-wallet',
                 'null' => false
+            ],
+            'status' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
+                'default' => 'pending',
+                'null' => true
             ],
             'deleted_at' => [   // Deleted At
                 'type' => 'DATETIME',
