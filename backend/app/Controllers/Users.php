@@ -36,6 +36,11 @@ class Users extends BaseController
     }
     public function productPage(): string
     {
-        return view('user/productPage');
+        $request = service('request');
+        $productId = $request->getGet('productId');
+
+        $productModel = new ProductModel();
+        $product = $productModel->find($productId);
+        return view('user/productPage',  ['product' => $product]);
     }
 }
