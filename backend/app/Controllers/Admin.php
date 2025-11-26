@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\OrdersModel;
+use App\Models\UserModel;
 
 class Admin extends BaseController
 {
@@ -16,7 +18,11 @@ class Admin extends BaseController
     }
     public function orders(): string
     {
-        return view('admin/orderPage');
+        $userModel = new UserModel();
+        $user = $userModel->findAll();
+        $ordersModel = new OrdersModel();
+        $orders = $ordersModel->findAll();
+        return view('admin/orderPage', ['orders' => $orders, 'user' => $user]);
     }
     public function adprod(): string
     {
