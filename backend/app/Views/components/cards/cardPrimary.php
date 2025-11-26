@@ -10,7 +10,7 @@
 
         <div class="flex justify-center mt-3 w-full">
             <div class="flex flex-col items-center">
-                <?= view("components/buttons/buttonPrimary", ["text" => "Add to Cart"]) ?>
+                <?= view("components/buttons/buttonPrimary", ["text" => "Add to Cart", "type" => esc($buttonType ?? "button")]) ?>
             </div>
         </div>
     </div>

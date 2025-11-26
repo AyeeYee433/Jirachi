@@ -45,7 +45,7 @@
             background-color: var(--primary-ghost);
             display: flex;
             flex-direction: column;
-            background-color: #fff;
+            background-color: var(--primary-ghost);
             min-height: 100vh;
             color: white;
             transition: all;
