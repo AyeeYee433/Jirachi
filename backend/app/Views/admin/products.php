@@ -6,6 +6,7 @@
     <?= view("components/header") ?>
 
     <!-- Main Content -->
+    <?= view("components/adminPanel") ?>
     <main class="flex-grow p-6">
         <div class="mx-auto max-w-7xl">
             <div class="flex justify-between items-center mb-6">
@@ -35,14 +36,15 @@
     </main>
 
     <script>
-    function confirmDelete(id) {
-        if (confirm('Are you sure you want to delete this menu item?')) {
-            window.location.href = `/admin/menu/delete/${id}`;
+        function confirmDelete(id) {
+            if (confirm('Are you sure you want to delete this menu item?')) {
+                window.location.href = `/admin/menu/delete/${id}`;
+            }
         }
-    }
     </script>
 
     <!-- Footer -->
     <?= view("components/footer") ?>
 </body>
+
 </html>
