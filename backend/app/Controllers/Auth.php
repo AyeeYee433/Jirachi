@@ -142,16 +142,16 @@ class Auth extends BaseController
         }
     }
 
-    public function productPage(){
+    public function productPage()
+    {
         $session = session();
         $request = service('request');
         $validation = \Config\Services::validation();
         $productId = $request->getPost('product_id');
 
-        if($session->has('user')){
-            return redirect()->to('/?productId=' . $productId);
-        }
-        else{
+        if ($session->has('user')) {
+            return redirect()->to('/productPage?productId=' . $productId);
+        } else {
             return redirect()->to('/login');
         }
     }
