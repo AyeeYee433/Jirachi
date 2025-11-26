@@ -18,6 +18,7 @@ class OrdersSeeder extends Seeder
                 'delivered_date' => $now,
                 'address' => 'manila',
                 'payment_method' => 'e-wallet',
+                'status' => 'delivered',
                 'created_at' => $now,
                 'updated_at' => $now,
             ]
