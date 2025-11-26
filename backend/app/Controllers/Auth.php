@@ -104,6 +104,7 @@ class Auth extends BaseController
             return redirect()->back()->withInput();
         }
     }
+
     public function adProd()
     {
         // id, name, desc, img, price, stock
@@ -138,6 +139,20 @@ class Auth extends BaseController
         } else {
             $session->setFlashdata('error', 'Something went wrong. Please try again.');
             return redirect()->back()->withInput();
+        }
+    }
+
+    public function productPage(){
+        $session = session();
+        $request = service('request');
+        $validation = \Config\Services::validation();
+        $productId = $request->getPost('product_id');
+
+        if($session->has('user')){
+            return redirect()->to('/?productId=' . $productId);
+        }
+        else{
+            return redirect()->to('/login');
         }
     }
 }
