@@ -19,7 +19,7 @@ $routes->get('/orders', 'Admin::orders');
 
 $routes->post('/login', 'Auth::login');
 $routes->post('/signup', 'Auth::signup');
-$routes->post('/adProd', 'Auth::adProd');
+$routes->post('/addProduct', 'Auth::addProduct');
 $routes->get('/logout', 'Auth::logout');
 
 $routes->post('/productPage', 'Auth::productPage');

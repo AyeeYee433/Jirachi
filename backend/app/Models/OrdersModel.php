@@ -9,7 +9,7 @@ class OrdersModel extends Model
     protected $table            = 'Orders';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = '\App\\Entities\\Product';
+    protected $returnType       = '\App\\Entities\\Order';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['id', 'customer_id', 'orered_date', 'delivered_date', 'address', 'payment_method', 'status'];

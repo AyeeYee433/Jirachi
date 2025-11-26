@@ -105,14 +105,14 @@ class Auth extends BaseController
         }
     }
 
-    public function adProd()
+    public function addProduct()
     {
         // id, name, desc, img, price, stock
         $session = session();
         $request = service('request');
         $validation = \Config\Services::validation();
 
-        $validation->setRule('name', 'name', 'required|is_unique[ProductsTable.name]');
+        $validation->setRule('name', 'name', 'required');
         $validation->setRule('price', 'price', 'required');
         $validation->setRule('stock', 'stock', 'required');
 
@@ -123,7 +123,7 @@ class Auth extends BaseController
             $session->setFlashdata('old', $post);
             return redirect()->back()->withInput();
         }
-
+        $productModel = new \App\Models\ProductModel();
         $data = [
             'name'      => $post['name'],
             'img'       => $post['img'],
@@ -131,11 +131,11 @@ class Auth extends BaseController
             'stock'     => $post['stock'],
         ];
 
-        $inserted = $userModel->insert($data);
-        
+        $inserted = $productModel->insert($data);
+
         if ($inserted) {
             $session->setFlashdata('success', 'Account created successfully! You can now log in.');
-            return redirect()->to('/dash');
+            return redirect()->to('/dashboard');
         } else {
             $session->setFlashdata('error', 'Something went wrong. Please try again.');
             return redirect()->back()->withInput();
@@ -169,18 +169,17 @@ class Auth extends BaseController
         ];
 
         $existing = $cartModel
-        ->where('customer_id', $data['customer_id'])
-        ->where('product_id', $data['product_id'])
-        ->first();
+            ->where('customer_id', $data['customer_id'])
+            ->where('product_id', $data['product_id'])
+            ->first();
 
         if ($existing) {
-        // Add the new quantity to the existing quantity
-        $newQty = $existing->quantity + $post['quantity'];
+            // Add the new quantity to the existing quantity
+            $newQty = $existing->quantity + $post['quantity'];
 
-        $cartModel->update($existing->id, [
-            'quantity' => $newQty
-        ]);
-
+            $cartModel->update($existing->id, [
+                'quantity' => $newQty
+            ]);
         } else {
             // Insert a new cart row
             $cartModel->insert([
@@ -191,7 +190,6 @@ class Auth extends BaseController
         }
 
         return redirect()->to('/cart');
-
     }
 
     public function updateQuantity()
