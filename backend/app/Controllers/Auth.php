@@ -123,7 +123,7 @@ class Auth extends BaseController
             $session->setFlashdata('old', $post);
             return redirect()->back()->withInput();
         }
-        $userModel = new \App\Models\UserModel();
+        $cartModel = new \App\Models\CartModel();
 
         $data = [
             'name'      => $post['name'],
@@ -133,6 +133,7 @@ class Auth extends BaseController
         ];
 
         $inserted = $userModel->insert($data);
+        
         if ($inserted) {
             $session->setFlashdata('success', 'Account created successfully! You can now log in.');
             return redirect()->to('/dash');
@@ -146,13 +147,33 @@ class Auth extends BaseController
     {
         $session = session();
         $request = service('request');
-        $validation = \Config\Services::validation();
         $productId = $request->getPost('product_id');
 
         if ($session->has('user')) {
             return redirect()->to('/productPage?productId=' . $productId);
         } else {
             return redirect()->to('/login');
+        }
+    }
+
+    public function addToCart()
+    {
+        $session = session();
+        $request = service('request');
+        $post = $request->getPost();
+
+        $data = [
+            'customer_id'     => $session["id"],
+            'product_id'      => $post['product_id'],
+            'quantity'        => $post['quantity']
+        ];
+        $inserted = $cartModel->insert($data);
+
+        if ($inserted) {
+            return redirect()->to('/cart');
+        } else {
+            $session->setFlashdata('error', 'Something went wrong. Please try again.');
+            return redirect()->back()->withInput();
         }
     }
 }

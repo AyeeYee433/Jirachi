@@ -23,4 +23,7 @@ $routes->post('/adProd', 'Auth::adProd');
 $routes->get('/logout', 'Auth::logout');
 
 $routes->post('/productPage', 'Auth::productPage');
+$routes->post('/addToCart', 'Auth::addToCart');
 $routes->get('/productPage', 'Users::productPage');
+
+
