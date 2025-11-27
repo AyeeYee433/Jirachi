@@ -29,3 +29,4 @@ $routes->post('/update_qty', 'Auth::updateQuantity');
 
 $routes->get('/viewOrder/(:num)', 'Admin::viewOrder/$1');
 $routes->post('deleteOrder/(:num)', 'Auth::deleteOrder/$1');
+$routes->get('/productReceipt', 'Users::productReceipt');

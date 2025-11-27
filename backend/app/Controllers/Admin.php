@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Entities\User;
 use App\Models\OrdersModel;
 use App\Models\UserModel;
+use App\Models\ProductModel;
 
 class Admin extends BaseController
 {
@@ -15,7 +16,12 @@ class Admin extends BaseController
     }
     public function products(): string
     {
-        return view('admin/products');
+        $model = new ProductModel();
+        $products = $model->findAll();
+
+        return view('admin/products', [
+            'products' => $products
+        ]);
     }
     public function orders(): string
     {
