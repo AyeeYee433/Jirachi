@@ -45,12 +45,12 @@
                     </div>
 
                     <div>
-                        <label for="desc" class="block font-medium text-gray-700 text-sm">Description</label>
+                        <label for="description" class="block font-medium text-gray-700 text-sm">Description</label>
                         <textarea
-                            id="desc"
-                            name="desc"
+                            id="description"
+                            name="description"
                             rows="4"
-                            class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"><?= esc(old('desc')) ?></textarea>
+                            class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"><?= esc(old('description')) ?></textarea>
                     </div>
 
                     <div>
