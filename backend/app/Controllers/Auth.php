@@ -162,6 +162,11 @@ class Auth extends BaseController
         $post = $request->getPost();
         $cartModel = new \App\Models\CartModel();
 
+        $user = $session->get('user');
+        if (!isset($user['id'])) {
+            return redirect()->to('/login');
+        }
+
         $data = [
             'customer_id'     => $session->get('user')['id'],
             'product_id'      => $post['product_id'],
@@ -195,7 +200,11 @@ class Auth extends BaseController
     public function updateQuantity()
     {
         $session = session();
-        $userId = $session->get('user')['id'] ?? null;
+        $user = $session->get('user');
+        if (!isset($user['id'])) {
+            return redirect()->to('/login');
+        }
+        $userId = $session->get('user')['id'];
 
         if (!$userId) {
             return redirect()->to('/login');

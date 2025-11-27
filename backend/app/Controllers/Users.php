@@ -32,6 +32,11 @@ class Users extends BaseController
     public function cart(): string
     {
         $session = session();
+        $userCheck = $session->get('user');
+        if (!isset($userCheck['id'])) {
+            return redirect()->to('/login');
+        }
+
         $user = $session->get('user')['id'];
 
         if (!$user) {
