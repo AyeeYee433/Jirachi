@@ -30,7 +30,7 @@
 <div class="flex flex-col justify-center items-center min-h-screen font-sans">
     <div class="bg-white shadow-lg p-8 border border-[var(--primary-ghost)] rounded-xl w-full max-w-md">
         <div class="flex flex-col items-center mb-6">
-            <img src="https://dendenotakushop.com/cdn/shop/files/KuripanPlushieMatikanetannhauserUmamusume-PrettyDerby_0.jpg?v=1724820492" alt="Cute Plushies" class="shadow-lg mx-auto mb-6 rounded-full w-40 h-40 object-cover">
+            <img src="https://plushkrush.com/cdn/shop/files/Bow_Pajamas_Mascot_Sleep_Mask_Kuromi_Plushie.png?v=1731880264" alt="Cute Plushies" class="shadow-lg mx-auto mb-6 rounded-full w-40 h-40 object-cover">
             <h1 class="mb-1 font-bold text-[var(--primary-accent)] text-2xl">Yokoso User!</h1>
             <p class="text-gray-500 text-sm">Sign in today!</p>
         </div>
