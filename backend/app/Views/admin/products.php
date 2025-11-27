@@ -24,11 +24,42 @@
                             <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Image</th>
                             <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Name</th>
                             <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Price</th>
-                            <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Category</th>
+                            <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Stock</th>
                             <th class="px-6 py-3 font-medium text-gray-500 text-xs text-left uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        <?php if (!empty($products)): ?>
+                            <?php foreach ($products as $item): ?>
+                                <tr>
+                                    <td class="px-6 py-4">
+                                        <img src="<?= esc($item->img) ?>" class="rounded w-16 h-16 object-cover">
+                                    </td>
+
+                                    <td class="px-6 py-4 text-gray-900"><?= esc($item->name) ?></td>
+
+                                    <td class="px-6 py-4 text-gray-900">$<?= number_format($item->price, 2) ?></td>
+
+                                    <td class="px-6 py-4 text-gray-500"><?= esc($item->description) ?></td>
+
+                                    <td class="px-6 py-4 text-gray-900"><?= esc($item->stock) ?></td>
+
+                                    <td class="px-6 py-4">
+                                        <div class="flex gap-2">
+                                            <button onclick="window.location.href='/admin/menu/edit/<?= $item->id ?>'"
+                                                    class="text-blue-600 hover:underline">Edit</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="6" class="px-6 py-4 text-gray-500 text-center">
+                                    No products found.
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
