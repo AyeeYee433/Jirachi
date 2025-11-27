@@ -26,9 +26,17 @@ $status = isset($order->status) ? $order->status : 'pending';
                 <p class="text-gray-600 text-sm">View full information for this order.</p>
             </div>
             <div class="flex items-center gap-3">
-                <form method="post" action="/admin/orders/<?= urlencode($orderId) ?>/soft-delete" onsubmit="return confirm('Delete this order?');" class="inli"
+                <form method="post"
+                    action="/deleteOrder/<?= $order->id ?>"
+                    onsubmit=" return confirm('Delete this order?');"
+                    class="inline">
+
                     <?= csrf_field() ?>
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md text-white text-sm">Delete Order</button>
+
+                    <button type="submit"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md text-white text-sm">
+                        Delete Order
+                    </button>
                 </form>
             </div>
             <div class="flex items-center gap-3">

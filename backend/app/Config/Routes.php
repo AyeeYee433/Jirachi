@@ -28,3 +28,4 @@ $routes->get('/productPage', 'Users::productPage');
 $routes->post('/update_qty', 'Auth::updateQuantity');
 
 $routes->get('/viewOrder/(:num)', 'Admin::viewOrder/$1');
+$routes->post('deleteOrder/(:num)', 'Auth::deleteOrder/$1');

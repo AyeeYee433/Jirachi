@@ -232,4 +232,21 @@ class Auth extends BaseController
 
         return redirect()->back();
     }
+    public function deleteOrder($orderId)
+    {
+        $model = new \App\Models\OrdersModel();
+
+        // Optional: check if the order exists
+        $order = $model->find($orderId);
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found');
+        }
+
+        // Update deleted_at with timestamp
+        $model->update($orderId, [
+            'deleted_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->to('/orders')->with('success', 'Order deleted successfully');
+    }
 }
