@@ -27,4 +27,4 @@ $routes->post('/addToCart', 'Auth::addToCart');
 $routes->get('/productPage', 'Users::productPage');
 $routes->post('/update_qty', 'Auth::updateQuantity');
 
-
+$routes->get('/viewOrder/(:num)', 'Admin::viewOrder/$1');
