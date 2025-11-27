@@ -28,7 +28,7 @@ class Users extends BaseController
     {
         return view('user/login');
     }
-    
+
     public function cart(): string
     {
         $session = session();
@@ -45,10 +45,10 @@ class Users extends BaseController
 
         $cartModel = new \App\Models\CartModel();
         $cartItems = $cartModel
-        ->select('Cart.*, Products.name AS product_name, Products.img AS product_img, Products.price AS product_price')
-        ->join('Products', 'Products.id = Cart.product_id')
-        ->where('Cart.customer_id', $user)
-        ->findAll();
+            ->select('Cart.*, Products.name AS product_name, Products.img AS product_img, Products.price AS product_price')
+            ->join('Products', 'Products.id = Cart.product_id')
+            ->where('Cart.customer_id', $user)
+            ->findAll();
         $cart = [];
 
         foreach ($cartItems as $item) {
@@ -71,5 +71,10 @@ class Users extends BaseController
         $productModel = new ProductModel();
         $product = $productModel->find($productId);
         return view('user/productPage',  ['product' => $product]);
+    }
+
+    public function productReceipt(): string
+    {
+        return view('user/productReceipt');
     }
 }
