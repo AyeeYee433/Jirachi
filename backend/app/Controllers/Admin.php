@@ -12,7 +12,9 @@ class Admin extends BaseController
 {
     public function dashBoard(): string
     {
-        return view('admin/dashBoard');
+        $userModel = new UserModel();
+        $user = $userModel->findAll();
+        return view('admin/dashBoard', ['users' => $user]);
     }
     public function products(): string
     {

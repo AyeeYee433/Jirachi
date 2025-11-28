@@ -326,5 +326,22 @@ class Auth extends BaseController
 
         $session->setFlashdata('success', 'Order placed successfully!');
         return redirect()->to('/orders');
+      
+    public function deleteUser($id)
+    {
+        $model = new \App\Models\UserModel();
+
+        // Optional: check if the user exists
+        $user = $model->find($id);
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        // Update deleted_at with timestamp
+        $model->update($id, [
+            'deleted_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->to('/dash')->with('success', 'User deleted successfully');
     }
 }
