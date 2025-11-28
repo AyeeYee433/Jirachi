@@ -4,7 +4,7 @@
     $user = $session->get('user');
   ?>
   <div class="flex justify-between items-center mx-auto px-4 py-6 container">
-    <h1 class="font-bold text-[var(--primary-accent)] text-3xl">Gappy's Plushies</h1>
+    <a href="/"><h1 class="font-bold text-[var(--primary-accent)] text-3xl">Gappy's Plushies</h1></a>
     <nav>
       <?php if ($session->has('user')): ?>
         <a href="#" role="button" onclick="confirmLogout(event)" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Logout</a>

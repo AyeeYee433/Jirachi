@@ -60,7 +60,30 @@ class Users extends BaseController
 
     public function checkout(): string
     {
-        return view('user/checkout');
+        $session = session();
+        $userCheck = $session->get('user');
+        if (!isset($userCheck['id'])) {
+            return redirect()->to('/login');
+        }
+
+        $user = $session->get('user')['id'];
+
+        if (!$user) {
+            return redirect()->to('/login');
+        }
+
+        $cartModel = new \App\Models\CartModel();
+        $cartItems = $cartModel
+            ->select('Cart.*, Products.name AS product_name, Products.img AS product_img, Products.price AS product_price')
+            ->join('Products', 'Products.id = Cart.product_id')
+            ->where('Cart.customer_id', $user)
+            ->findAll();
+        $cart = [];
+
+        foreach ($cartItems as $item) {
+            $cart[] = $item->toArray();
+        }  // convert entity → array
+        return view('user/checkout', ['cart' => $cart]);
     }
 
     public function productPage(): string
