@@ -2,11 +2,10 @@
 <?= view("components/header") ?>
 
 <?php
-$cart = session()->get('cart') ?? [];
 $subtotal = 0;
 
 foreach ($cart as $item) {
-    $subtotal += $item['price'] * $item['qty'];
+    $subtotal += $item['product_price'] * $item['quantity'];
 }
 ?>
 
@@ -36,28 +35,32 @@ foreach ($cart as $item) {
                     Order Summary
                 </h3>
 
-                <div class="flex justify-between mb-2 text-gray-700">
-                    <span>Subtotal</span>
-                    <span>$<?= number_format($subtotal, 2) ?></span>
+                <div class="flex justify-between items-center mt-3 pt-3 font-bold text-gray-900 text-lg">
+                    <div class="flex items-center">
+                        <img src="<?= esc($item['product_img']) ?>"
+                            alt="<?= esc($item['product_name']) ?>"
+                            class="mr-6 border rounded-lg w-24 h-24 object-cover">
+                        <h3 class="font-bold text-gray-900 text-lg"><?= esc($item['product_name']) ?></h3>
+                    </div>
+                    $<?= esc($item['product_price']) * esc($item['quantity'])?>
                 </div>
 
-                <div class="flex justify-between mb-2 text-gray-700">
-                    <span>Shipping</span>
-                    <span class="font-semibold text-green-600">FREE</span>
-                </div>
+
 
                 <div class="flex justify-between mt-3 pt-3 border-t font-bold text-gray-900 text-lg">
                     <span>Total</span>
                     <span>$<?= number_format($subtotal, 2) ?></span>
                 </div>
 
-                <a href="/place_order" class="block mt-6">
-                    <?= view("components/buttons/buttonPrimary", ["text" => "Place Order"]) ?>
-                </a>
+                <div class="flex justify-between items-center mt-3 pt-3 border-t font-bold text-gray-900 text-lg">
+                    <a href="/cart" class="block">
+                        <?= view("components/buttons/buttonSecondary", ["text" => "Back to Cart"]) ?>
+                    </a>
+                    <a href="/place_order" class="block">
+                        <?= view("components/buttons/buttonPrimary", ["text" => "Place Order"]) ?>
+                    </a>
 
-                <a href="/cart" class="block mt-3">
-                    <?= view("components/buttons/buttonSecondary", ["text" => "Back to Cart"]) ?>
-                </a>
+                </div>
 
             </div>
 
