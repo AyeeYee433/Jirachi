@@ -5,6 +5,11 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\UserModel;
+use App\Models\OrdersModel;
+use App\Models\OrderedItemsModel;
+use App\Models\CartModel;
+
 class Auth extends BaseController
 {
 
@@ -232,6 +237,7 @@ class Auth extends BaseController
 
         return redirect()->back();
     }
+
     public function deleteOrder($orderId)
     {
         $model = new \App\Models\OrdersModel();
@@ -249,6 +255,78 @@ class Auth extends BaseController
 
         return redirect()->to('/orders')->with('success', 'Order deleted successfully');
     }
+
+    public function placeOrder()
+    {
+        $session = session();
+        $userId = $session->get('user')['id'] ?? null;
+
+        if (!$userId) {
+            return redirect()->to('/login');
+        }
+
+        // Get POST values
+        $paymentMethod = $this->request->getPost('payment_method') ?? "card";
+
+        if (!$paymentMethod) {
+            $session->setFlashdata('error', 'Please select a payment method.');
+            return redirect()->back();
+        }
+
+        // Retrieve cart from session
+        $cart = $session->get('cart_data');
+
+        if (empty($cart)) {
+            $session->setFlashdata('error', 'Your cart is empty.');
+            return redirect()->to('/cart');
+        }
+
+        $orderModel = new OrdersModel();
+        $orderItemModel = new OrderedItemsModel();
+        $userModel = new UserModel();
+
+        // Get user's saved address
+        $user = $userModel->find($userId);
+        $address = $user->address ?? '';
+
+        // Create Order
+        $orderData = [
+            'customer_id'    => $userId,
+            'address'        => $address,
+            'payment_method' => $paymentMethod,
+            'status'         => 'pending',
+            'ordered_date'   => date('Y-m-d H:i:s')
+        ];
+
+        $orderId = $orderModel->insert($orderData);
+
+        if (!$orderId) {
+            $session->setFlashdata('error', 'Failed to place order.');
+            return redirect()->back();
+        }
+
+        // Insert all cart items into order_items table
+        foreach ($cart as $item) {
+            $orderItemModel->insert([
+                'order_id'          => $orderId,
+                'product_id'        => $item['product_id'],
+                'price_at_purchase' => $item['product_price'] * $item['quantity'],
+                'quantity'          => $item['quantity'],
+            ]);
+        }
+
+        // Clear cart from DB
+        $cartModel = new CartModel();
+        $cartModel->where('customer_id', $userId)->set([
+            'deleted_at' => date('Y-m-d H:i:s')
+        ])->update();
+
+        // Clear cart from session
+        $session->remove('cart_data');
+
+        $session->setFlashdata('success', 'Order placed successfully!');
+        return redirect()->to('/orders');
+      
     public function deleteUser($id)
     {
         $model = new \App\Models\UserModel();

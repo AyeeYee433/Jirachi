@@ -55,6 +55,8 @@ class Users extends BaseController
             $cart[] = $item->toArray();   // convert entity → array
         }
 
+        $session->set('cart_data', $cart);
+
         return view('user/cart', ['cart' => $cart]);
     }
 
