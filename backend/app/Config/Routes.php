@@ -28,5 +28,7 @@ $routes->get('/productPage', 'Users::productPage');
 $routes->post('/update_qty', 'Auth::updateQuantity');
 
 $routes->get('/viewOrder/(:num)', 'Admin::viewOrder/$1');
-$routes->post('deleteOrder/(:num)', 'Auth::deleteOrder/$1');
 $routes->get('/productReceipt', 'Users::productReceipt');
+
+$routes->post('deleteOrder/(:num)', 'Auth::deleteOrder/$1');
+$routes->post('deleteUser/(:num)', 'Auth::delete/$1');
