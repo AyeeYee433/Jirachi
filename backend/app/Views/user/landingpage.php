@@ -16,7 +16,7 @@
 
   <!-- Hero Section -->
   <section class="flex flex-col flex-1 justify-center items-center py-16 text-center" id="shop">
-    <img src="https://plushkrush.com/cdn/shop/files/Bow_Pajamas_Mascot_Sleep_Mask_Kuromi_Plushie.png?v=1731880264" alt="Cute Plushies" class="shadow-lg mx-auto mb-6 rounded-full w-40 h-40 object-cover">
+    <img src="https://usshoppingsos.com/cdn/shop/files/zz-2408050351_CN_--1_700x700.webp?v=1724213634" alt="Cute Plushies" class="shadow-lg mx-auto mb-6 rounded-full w-40 h-40 object-cover">
     <h2 class="mb-4 font-extrabold text-[var(--primary-accent)] text-4xl">Snuggle Up With Gappy's Plushies!</h2>
     <a href="/shop" class="bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] shadow px-8 py-3 rounded-full font-semibold text-white transition">
       Shop Now
