@@ -12,7 +12,7 @@ class OrdersModel extends Model
     protected $returnType       = '\App\\Entities\\Order';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'customer_id', 'orered_date', 'delivered_date', 'address', 'payment_method', 'status', 'deleted_at'];
+    protected $allowedFields    = ['id', 'customer_id', 'ordered_date', 'delivered_date', 'address', 'payment_method', 'status', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

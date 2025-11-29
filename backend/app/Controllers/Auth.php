@@ -193,9 +193,9 @@ class Auth extends BaseController
         } else {
             // Insert a new cart row
             $cartModel->insert([
-                'customer_id' => $customerId,
-                'product_id'  => $productId,
-                'quantity'    => $quantity
+                'customer_id' => $data['customer_id'],
+                'product_id'  => $data['product_id'],
+                'quantity'    => $data['quantity']
             ]);
         }
 
@@ -326,7 +326,7 @@ class Auth extends BaseController
 
         $session->setFlashdata('success', 'Order placed successfully!');
         return redirect()->to('/orders');
-      
+    }
     public function deleteUser($id)
     {
         $model = new \App\Models\UserModel();
@@ -342,6 +342,24 @@ class Auth extends BaseController
             'deleted_at' => date('Y-m-d H:i:s')
         ]);
 
-        return redirect()->to('/dash')->with('success', 'User deleted successfully');
+        return redirect()->to('/dashboard')->with('success', 'User deleted successfully');
+    }
+    public function markDelivered($orderId)
+    {
+        $orderModel = new \App\Models\OrdersModel();
+
+        // Check if order exists
+        $order = $orderModel->find($orderId);
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found.');
+        }
+
+        // Update status + delivered_at timestamp
+        $orderModel->update($orderId, [
+            'status'       => 'delivered',
+            'delivered_at' => date('Y-m-d H:i:s')
+        ]);
+
+        return redirect()->back()->with('success', 'Order marked as delivered.');
     }
 }

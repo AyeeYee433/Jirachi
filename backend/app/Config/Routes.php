@@ -29,9 +29,10 @@ $routes->post('/update_qty', 'Auth::updateQuantity');
 
 $routes->get('/viewOrder/(:num)', 'Admin::viewOrder/$1');
 $routes->post('/deleteOrder/(:num)', 'Auth::deleteOrder/$1');
-$routes->post('/deleteUser/(:num)', 'Auth::delete/$1');
+$routes->post('/deleteUser/(:num)', 'Auth::deleteUser/$1');
+
+$routes->post('/markDelivered/(:num)', 'Auth::markDelivered/$1');
+$routes->post('/admin/orders/(:num)/mark-delivered', 'OrderController::markDelivered/$1');
 
 $routes->post('/place_order', 'Auth::placeOrder');
 $routes->get('/productReceipt', 'Users::productReceipt');
-
-
