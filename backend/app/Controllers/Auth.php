@@ -130,17 +130,18 @@ class Auth extends BaseController
         }
         $productModel = new \App\Models\ProductModel();
         $data = [
-            'name'      => $post['name'],
-            'img'       => $post['img'],
-            'price'     => $post['price'],
-            'stock'     => $post['stock'],
+            'name'          => $post['name'],
+            'img'           => $post['img'],
+            'description'   => $post['description'],
+            'price'         => $post['price'],
+            'stock'         => $post['stock'],
         ];
 
         $inserted = $productModel->insert($data);
 
         if ($inserted) {
-            $session->setFlashdata('success', 'Account created successfully! You can now log in.');
-            return redirect()->to('/dashboard');
+            $session->setFlashdata('success', 'Product added successfully!');
+            return redirect()->to('/products');
         } else {
             $session->setFlashdata('error', 'Something went wrong. Please try again.');
             return redirect()->back()->withInput();

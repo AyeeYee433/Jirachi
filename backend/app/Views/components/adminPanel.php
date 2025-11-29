@@ -13,7 +13,7 @@
                 </a>
 
                 <a href="/products"
-                    <?= view("components/buttons/buttonAdmin", ["text" => "Menu Management"]) ?>
+                    <?= view("components/buttons/buttonAdmin", ["text" => "Product Management"]) ?>
                     </a>
 
 
