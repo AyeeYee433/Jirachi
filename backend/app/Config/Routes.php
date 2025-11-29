@@ -19,5 +19,24 @@ $routes->get('/orders', 'Admin::orders');
 
 $routes->post('/login', 'Auth::login');
 $routes->post('/signup', 'Auth::signup');
-$routes->post('/adProd', 'Auth::adProd');
+$routes->post('/addProduct', 'Auth::addProduct');
 $routes->get('/logout', 'Auth::logout');
+
+$routes->post('/productPage', 'Auth::productPage');
+$routes->post('/addToCart', 'Auth::addToCart');
+$routes->get('/productPage', 'Users::productPage');
+$routes->post('/update_qty', 'Auth::updateQuantity');
+
+$routes->get('/viewOrder/(:num)', 'Admin::viewOrder/$1');
+$routes->post('/deleteOrder/(:num)', 'Auth::deleteOrder/$1');
+$routes->post('/deleteUser/(:num)', 'Auth::deleteUser/$1');
+
+$routes->post('/markDelivered/(:num)', 'Auth::markDelivered/$1');
+$routes->post('/admin/orders/(:num)/mark-delivered', 'OrderController::markDelivered/$1');
+
+$routes->post('/place_order', 'Auth::placeOrder');
+$routes->get('/productReceipt', 'Users::productReceipt');
+
+$routes->get('admin/products/add', 'Admin::productForm');
+$routes->get('admin/products/edit/(:num)', 'Admin::productForm/$1');
+$routes->post('admin/products/save', 'Admin::saveProduct');

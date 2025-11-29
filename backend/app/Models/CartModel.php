@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProductModel extends Model
+class CartModel extends Model
 {
-    protected $table            = 'Products';
+    protected $table            = 'Cart';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = '\App\\Entities\\Product';
+    protected $returnType       = '\App\\Entities\\Cart';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'name', 'description', 'img', 'price', 'stock'];
+    protected $allowedFields    = ['id', 'customer_id', 'product_id', 'quantity', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
