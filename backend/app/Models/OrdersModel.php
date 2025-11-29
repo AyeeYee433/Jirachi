@@ -10,9 +10,9 @@ class OrdersModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = '\App\\Entities\\Order';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'customer_id', 'orered_date', 'delivered_date', 'address', 'payment_method', 'status'];
+    protected $allowedFields    = ['id', 'customer_id', 'ordered_date', 'delivered_date', 'address', 'payment_method', 'status', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

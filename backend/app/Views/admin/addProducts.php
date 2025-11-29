@@ -28,10 +28,10 @@
                     </div>
                 <?php endif; ?>
 
-                <form method="post" action="<?= site_url('/addProduct') ?>" class="space-y-6 text-black">
+                <form method="post" action="<?= site_url('admin/products/save') ?>" class="space-y-6 text-black">
                     <?= csrf_field() ?>
 
-                    <input type="hidden" name="id" value="<?= esc(old('id')) ?>">
+                    <input type="hidden" name="id" value="<?= esc(old('id', $product->id)) ?>">
 
                     <div>
                         <label for="name" class="block font-medium text-gray-700 text-sm">Name</label>
@@ -39,7 +39,7 @@
                             id="name"
                             name="name"
                             type="text"
-                            value="<?= esc(old('name')) ?>"
+                            value="<?= esc(old('name', $product->name)) ?>"
                             required
                             class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full" />
                     </div>
@@ -50,7 +50,7 @@
                             id="description"
                             name="description"
                             rows="4"
-                            class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"><?= esc(old('description')) ?></textarea>
+                            class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"><?= esc(old('description', $product->description)) ?></textarea>
                     </div>
 
                     <div>
@@ -59,7 +59,7 @@
                             id="img"
                             name="img"
                             type="url"
-                            value="<?= esc(old('img')) ?>"
+                            value="<?= esc(old('img', $product->img)) ?>"
                             placeholder="https://example.com/image.jpg"
                             class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full" />
                     </div>
@@ -73,7 +73,7 @@
                                 type="number"
                                 step="0.1"
                                 min="0"
-                                value="<?= esc(old('price')) ?>"
+                                value="<?= esc(old('price', $product->price)) ?>"
                                 required
                                 class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full" />
                         </div>
@@ -86,7 +86,7 @@
                                 type="number"
                                 step="1"
                                 min="0"
-                                value="<?= esc(old('stock')) ?>"
+                                value="<?= esc(old('stock', $product->stock)) ?>"
                                 required
                                 class="block mt-1 px-3 py-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full" />
                         </div>

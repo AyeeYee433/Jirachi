@@ -10,9 +10,9 @@ class UserModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = '\App\\Entities\\User';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'first_name', 'last_name', 'username', 'email', 'address', 'type', 'password_hash'];
+    protected $allowedFields    = ['id', 'first_name', 'last_name', 'username', 'email', 'address', 'type', 'password_hash', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
