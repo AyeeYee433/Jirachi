@@ -108,7 +108,7 @@ $status = isset($order->status) ? $order->status : 'pending';
         </section>
         <div class="flex items-center gap-3 mt-6">
             <?php if ($status !== 'completed' && $status !== 'cancelled' && $status !== 'delivered'): ?>
-                <form method="post" action="/admin/orders/<?= urlencode($orderId) ?>/mark-delivered" onsubmit="return confirm('Mark order <?= esc($orderId) ?> as delivered?');" class="inline"
+                <form method="post" action="/markDelivered/<?= $order->id ?>" onsubmit="return confirm('Mark order <?= esc($orderId) ?> as delivered?');" class="inline">
                     <?= csrf_field() ?>
                     <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md text-white text-sm">Mark Delivered</button>
                 </form>
