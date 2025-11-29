@@ -10,7 +10,7 @@
     <main class="flex-grow p-6">
         <div class="mx-auto max-w-7xl">
             <div class="flex justify-between items-center mb-6">
-                <h1 class="font-bold text-gray-900 text-2xl">Menu Management</h1>
+                <h1 class="font-bold text-gray-900 text-2xl">List of Available Products</h1>
                 <button onclick="window.location.href='/adprod'" class="bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] px-4 py-2 rounded text-white">
                     Add New Item
                 </button>
@@ -47,8 +47,9 @@
 
                                     <td class="px-6 py-4">
                                         <div class="flex gap-2">
-                                            <button onclick="window.location.href='/admin/menu/edit/<?= $item->id ?>'"
-                                                    class="text-blue-600 hover:underline">Edit</button>
+                                            <a href="<?= site_url('admin/products/edit/' . $item->id) ?>" class="text-blue-600 hover:underline">
+                                                Edit
+                                            </a>>
                                         </div>
                                     </td>
                                 </tr>
