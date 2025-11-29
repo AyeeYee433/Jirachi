@@ -10,12 +10,10 @@
 
             <a href="/orders"
                 <?= view("components/buttons/buttonAdmin", ["text" => "Manage Order"]) ?>
-                Orders
                 </a>
 
                 <a href="/products"
-                    <?= view("components/buttons/buttonAdmin", ["text" => "Menu Management"]) ?>
-                    Products
+                    <?= view("components/buttons/buttonAdmin", ["text" => "Product Management"]) ?>
                     </a>
 
 

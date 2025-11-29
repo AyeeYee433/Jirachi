@@ -41,9 +41,6 @@
                 <div class="text-gray-600 text-sm">
                     Showing <?= isset($orders) ? count($orders) : 0 ?> orders
                 </div>
-                <div>
-                    <a href="" class="inline-flex items-center bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] shadow-sm px-4 py-2 rounded-md text-white text-sm">New Order</a>
-                </div>
             </div>
 
             <div class="overflow-x-auto">
@@ -76,8 +73,8 @@
                             </tr>
                         <?php else: ?>
                             <?php foreach ($orders as $order): ?>
-                                <?php foreach ($user as $u):
-                                    if ($u->id == $order->id) {
+                                <?php foreach ($customer as $u):
+                                    if ($u->id == $order->customer_id) {
                                         $lname = $u->last_name;
                                         $fname = $u->first_name;
                                     }
@@ -118,15 +115,7 @@
                                     </td>
                                     <td class="px-4 py-3 text-sm text-left">
                                         <div class="inline-flex items-center gap-2">
-                                            <a href="/admin/orders/<?= urlencode($order->id) ?>" class="text-indigo-600 hover:underline">View</a>
-                                            <a href="/admin/orders/<?= urlencode($order->id) ?>/edit" class="text-yellow-600 hover:underline">Edit</a>
-
-                                            <?php if ($status !== 'completed' && $status !== 'cancelled'): ?>
-                                                <form method="post" action="/admin/orders/<?= urlencode($order->id) ?>/cancel" onsubmit="return confirm('Are you sure you want to cancel order <?= esc($order->id) ?>?');" class="inline-block">
-                                                    <?= csrf_field() ?>
-                                                    <button type="submit" class="text-red-600 hover:underline">Cancel</button>
-                                                </form>
-                                            <?php endif; ?>
+                                            <a class="text-black" href="/viewOrder/<?= $order->id ?> ">View</a>
                                         </div>
                                     </td>
                                 </tr>
