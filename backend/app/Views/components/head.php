@@ -29,6 +29,7 @@
             --primary-hover: #e63a13ff;
             --primary-hover2: ##ffb300;
         }
+
         .font-inter {
             font-family: 'Inter', sans-serif;
         }
@@ -45,12 +46,33 @@
             background-color: var(--primary-ghost);
             display: flex;
             flex-direction: column;
-            background-color: var(--primary-ghost);
             min-height: 100vh;
             color: white;
-            transition: all;
-            transition-duration: 300ms;
+            transition: all 0.3s;
+            position: relative;
+            /* Needed for ::before */
         }
+
+        /* Transparent background image overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            /* Covers the whole viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/WWrF5wi.jpeg://i.pinimg.com/736x/19/76/95/197695fd38a03760ca7b904f1ec30fe4.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.4;
+            /* Adjust transparency here (0 = invisible, 1 = opaque) */
+            z-index: -1;
+            /* Behind all content */
+        }
+
         /*
         .swatch {
             width: 100%;
