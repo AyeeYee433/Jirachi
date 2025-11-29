@@ -28,10 +28,10 @@ class Admin extends BaseController
     public function orders(): string
     {
         $userModel = new UserModel();
-        $user = $userModel->findAll();
+        $customer = $userModel->findAll();
         $ordersModel = new OrdersModel();
         $orders = $ordersModel->findAll();
-        return view('admin/orderPage', ['orders' => $orders, 'user' => $user]);
+        return view('admin/orderPage', ['orders' => $orders, 'customer' => $customer]);
     }
     public function adprod(): string
     {

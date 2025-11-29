@@ -28,24 +28,24 @@ foreach ($cart as $item) {
             </div>
 
         <?php else: ?>
-            <form action="/place_order" method="post" >
+            <form action="/place_order" method="post">
                 <div class="bg-white shadow p-6 border border-gray-200 rounded-lg">
 
                     <h3 class="mb-4 pb-3 border-b font-bold text-gray-800 text-xl">
                         Order Summary
                     </h3>
 
-                    <div class="flex justify-between items-center mt-3 pt-3 font-bold text-gray-900 text-lg">
-                        <div class="flex items-center">
-                            <img src="<?= esc($item['product_img']) ?>"
-                                alt="<?= esc($item['product_name']) ?>"
-                                class="mr-6 border rounded-lg w-24 h-24 object-cover">
-                            <h3 class="font-bold text-gray-900 text-lg"><?= esc($item['product_name']) ?></h3>
+                    <?php foreach ($cart as $item): ?>
+                        <div class="flex justify-between items-center mt-3 pt-3 font-bold text-gray-900 text-lg">
+                            <div class="flex items-center">
+                                <img src="<?= esc($item['product_img']) ?>"
+                                    alt="<?= esc($item['product_name']) ?>"
+                                    class="mr-6 border rounded-lg w-24 h-24 object-cover">
+                                <h3 class="font-bold text-gray-900 text-lg"><?= esc($item['product_name']) ?></h3>
+                            </div>
+                            $<?= esc($item['product_price']) * esc($item['quantity']) ?>
                         </div>
-                        $<?= esc($item['product_price']) * esc($item['quantity'])?>
-                    </div>
-
-
+                    <?php endforeach; ?>
 
                     <div class="flex justify-between mt-3 pt-3 border-t font-bold text-gray-900 text-lg">
                         <span>Total</span>

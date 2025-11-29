@@ -326,7 +326,7 @@ class Auth extends BaseController
         $session->remove('cart_data');
 
         $session->setFlashdata('success', 'Order placed successfully!');
-        return redirect()->to('/orders');
+        return redirect()->to('/');
     }
     public function deleteUser($id)
     {

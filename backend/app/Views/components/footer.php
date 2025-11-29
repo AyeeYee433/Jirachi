@@ -1,4 +1,4 @@
-<footer class="relative bg-[url('https://pbs.twimg.com/media/G62qyqEakAA-kxW?format=png&name=medium')] bg-[var(--primary)] bg-cover bg-no-repeat bg-center">
+<footer class="relative bg-[url('https://pbs.twimg.com/media/G62qyqEakAA-kxW?format=png&name=medium')] bg-[var(--primary)] bg-cover bg-no-repeat bg-center mt-auto">
 
   <div class="flex flex-col items-center mx-auto px-4 px-4 py-8 max-w-7xl">
 
