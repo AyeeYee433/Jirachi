@@ -10,7 +10,7 @@ class OrderedItemsModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = '\App\\Entities\\OrderedItem';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $protectFields    = true;
     protected $allowedFields    = ['id', 'product_id',  'order_id', 'quantity', 'price_at_purchase', 'created_at', 'updated_at', 'deleted_at'];
 
