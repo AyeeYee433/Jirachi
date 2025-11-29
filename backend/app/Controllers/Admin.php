@@ -54,14 +54,7 @@ class Admin extends BaseController
         if ($id !== null) {
             $product = $productModel->find($id);
         } else {
-            $product = [
-                'id' => '',
-                'name' => '',
-                'description' => '',
-                'img' => '',
-                'price' => '',
-                'stock' => ''
-            ];
+            $product = new \App\Models\ProductModel();
         }
         return view('admin/addProducts', ['product' => $product]);
     }
