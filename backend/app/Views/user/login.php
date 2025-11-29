@@ -30,7 +30,7 @@
 <div class="min-h-screen flex flex-col justify-center items-center font-sans">
     <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8 border border-[var(--primary-ghost)]">
         <div class="flex flex-col items-center mb-6">
-            <img src="https://dendenotakushop.com/cdn/shop/files/KuripanPlushieMatikanetannhauserUmamusume-PrettyDerby_0.jpg?v=1724820492" alt="Cute Plushies" class="mx-auto rounded-full shadow-lg w-40 h-40 mb-6 object-cover">
+            <img src="https://usshoppingsos.com/cdn/shop/files/zz-2408050351_CN_--1_700x700.webp?v=1724213634" alt="Cute Plushies" class="mx-auto rounded-full shadow-lg w-40 h-40 mb-6 object-cover">
             <h1 class="text-2xl font-bold text-[var(--primary-accent)] mb-1">Yokoso User!</h1>
             <p class="text-sm text-gray-500">Welcome Back!</p>
         </div>

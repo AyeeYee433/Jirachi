@@ -17,7 +17,7 @@
 
    <!-- Hero Section -->
    <section class="flex flex-col flex-1 justify-center items-center py-16 text-center" id="shop">
-     <img src="https://dendenotakushop.com/cdn/shop/files/KuripanPlushieMatikanetannhauserUmamusume-PrettyDerby_0.jpg?v=1724820492"
+     <img src="https://usshoppingsos.com/cdn/shop/files/zz-2408050351_CN_--1_700x700.webp?v=1724213634"
        alt="Cute Plushies"
        class="shadow-lg mx-auto mb-6 rounded-full w-40 h-40 object-cover">
      <h2 class="mb-4 font-extrabold text-[var(--primary-accent)] text-4xl">Snuggle Up With Gappy's Plushies!</h2>
