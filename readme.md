@@ -13,7 +13,7 @@
 
 <!-- * Description Section -->
 <div align="center">
-Soft and not Wet
+Gappy's Plushies is a family-run store dedicated to bringing joy and comfort through our curated selection of plush toys. Every plushy is chosen for its quality, softness, and irresistible charm. Whether you're gifting a friend or treating yourself, we have the perfect snuggle buddy for you!
 </div>
 
 <br/>
