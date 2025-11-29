@@ -10,7 +10,7 @@
         <div class="mx-auto max-w-7xl">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="font-bold text-gray-900 text-2xl">Menu Management</h1>
-                <a href="<?= site_url('admin/products') ?>" class="bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] px-4 py-2 rounded text-white">
+                <a href="<?= site_url('/products') ?>" class="bg-[var(--primary-accent)] hover:bg-[var(--primary-hover)] px-4 py-2 rounded text-white">
                     Back to List
                 </a>
             </div>
@@ -30,9 +30,7 @@
 
                 <form method="post" action="<?= site_url('admin/products/save') ?>" class="space-y-6 text-black">
                     <?= csrf_field() ?>
-
                     <input type="hidden" name="id" value="<?= esc(old('id', $product->id)) ?>">
-
                     <div>
                         <label for="name" class="block font-medium text-gray-700 text-sm">Name</label>
                         <input
@@ -93,7 +91,6 @@
                     </div>
 
                     <div class="flex justify-end gap-3 pt-4">
-                        <?= view("components/buttons/buttonTertiary", ["text" => "Cancel"]) ?>
                         <?= view("components/buttons/buttonSecondary", ["text" => "Save Product", "type" => "submit"]) ?>
                     </div>
                 </form>
