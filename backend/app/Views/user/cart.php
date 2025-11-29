@@ -14,7 +14,7 @@
             <div class="py-20 text-center">
                 <p class="mb-4 text-gray-600 text-lg">Your cart is empty</p>
 
-                <a href="/shop">
+                <a href="/">
                     <?= view("components/buttons/buttonPrimary", ["text" => "Go Shopping"]) ?>
                 </a>
 
@@ -38,7 +38,7 @@
                         <!-- Info -->
                         <div class="flex-1 ml-4">
                             <h3 class="font-bold text-gray-900 text-lg"><?= esc($item['product_name']) ?></h3>
-                            <p class="text-gray-600 text-sm">$<?= esc($item['product_price']) * esc($item['quantity'])?></p>
+                            <p class="text-gray-600 text-sm">$<?= esc($item['product_price']) * esc($item['quantity']) ?></p>
 
                             <!-- Quantity -->
                             <form method="POST" action="/update_qty" class="flex items-center gap-2 mt-3">

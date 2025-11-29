@@ -22,7 +22,7 @@
         <a href="/login" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Login</a>
         <a href="/signUp" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Sign Up</a>
       <?php endif; ?>
-      <a href="/" class="bg-white hover:bg-[var(--primary-accent)] shadow px-4 py-2 rounded-lg text-[var(--primary-accent)] hover:text-white transition duration-300">Home</a>
+      <a href="/" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Home</a>
     </nav>
   </div>
 </header>

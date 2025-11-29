@@ -73,8 +73,8 @@
                             </tr>
                         <?php else: ?>
                             <?php foreach ($orders as $order): ?>
-                                <?php foreach ($user as $u):
-                                    if ($u->id == $order->id) {
+                                <?php foreach ($customer as $u):
+                                    if ($u->id == $order->customer_id) {
                                         $lname = $u->last_name;
                                         $fname = $u->first_name;
                                     }
