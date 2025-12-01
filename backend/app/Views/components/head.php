@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><?= esc($title ?? null ? $title . ": " : "") ?>Sample kaya to hahahahaha!!!!</title>
+    <title><?= esc($title ?? null ? $title . ": " : "") ?>Gappy's Plushies</title>
 
     <!-- Default CDN includes -->
     <!-- Google Fonts: Playfair Display + Lato (global) -->
@@ -22,19 +22,58 @@
     <!-- Global base typography -->
     <style>
         :root {
-            --sage-dark: #6F8E78;
-            --sage: #8DAA91;
-            --sage-light: #CFE6D7;
-
-            --rose-dark: #A87D79;
-            --rose: #C7A6A0;
-            --rose-light: #EDD9D6;
-
-            --stone-dark: #d6d6d6ff;
-            --stone: #aaaaaaff;
-            --stone-light: #c2c2c2ff;
+            --primary: #ffe383;
+            --primary-accent: #f66948;
+            --primary-accent2: #7ecaa4;
+            --primary-ghost: #FEFAFA;
+            --primary-hover: #e63a13ff;
+            --primary-hover2: ##ffb300;
         }
 
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+
+        body {
+            background-color: var(--primary-ghost);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: white;
+            transition: all 0.3s;
+            position: relative;
+            /* Needed for ::before */
+        }
+
+        /* Transparent background image overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            /* Covers the whole viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/WWrF5wi.jpeg://i.pinimg.com/736x/19/76/95/197695fd38a03760ca7b904f1ec30fe4.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.4;
+            /* Adjust transparency here (0 = invisible, 1 = opaque) */
+            z-index: -1;
+            /* Behind all content */
+        }
+
+        /*
         .swatch {
             width: 100%;
             height: 3rem;
@@ -42,12 +81,9 @@
             border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
-        /* Button color utilities using design tokens */
+        /* Button color utilities using design tokens
         .btn-sage {
             background: var(--sage-dark);
-            color: white;
-            transition: all;
-            transition-duration: 300ms;
         }
 
         .btn-sage:hover {
@@ -121,7 +157,7 @@
             cursor: not-allowed;
         }
 
-        /* Header CTA uses the main accent (sage-dark) */
+        /* Header CTA uses the main accent (sage-dark) 
         .header-cta {
             background: var(--sage-dark);
             color: white;
@@ -131,7 +167,7 @@
             background: var(--sage);
         }
 
-        /* Small token-driven utilities */
+        /* Small token-driven utilities 
         .text-sage-dark {
             color: var(--sage-dark);
         }
@@ -156,8 +192,8 @@
             background: var(--stone-light);
         }
 
-        /* Custom scrollbar styling using sage-light token (#CFE6D7) */
-        /* WebKit-based browsers */
+        /* Custom scrollbar styling using sage-light token (#CFE6D7) 
+        /* WebKit-based browsers 
         ::-webkit-scrollbar {
             width: 12px;
             height: 12px;
@@ -178,18 +214,18 @@
             background: linear-gradient(180deg, var(--sage-dark) 0%, var(--sage) 100%);
         }
 
-        /* Firefox */
+        /* Firefox 
         * {
             scrollbar-width: thin;
             scrollbar-color: var(--sage-dark) var(--sage-light);
         }
 
-        /* Utility class to apply custom scrollbars to specific containers */
+        /* Utility class to apply custom scrollbars to specific containers 
         .custom-scroll {
             overflow: auto;
         }
 
-        /* Base typography */
+        /* Base typography 
         html,
         body {
             font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -201,6 +237,6 @@
         h4,
         h5 {
             font-family: 'Playfair Display', Georgia, serif;
-        }
+        }*/
     </style>
 </head>
