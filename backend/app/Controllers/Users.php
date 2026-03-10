@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
+use App\Models\OrdersModel;
 
 class Users extends BaseController
 {
@@ -102,4 +103,24 @@ class Users extends BaseController
     {
         return view('user/productReceipt');
     }
+
+    public function orders()
+    {
+        $session = session();
+        $userId = $session->get('user')['id'] ?? null;
+
+        if (!$userId) {
+            return redirect()->to('/login');
+        }
+
+        $orderModel = new OrdersModel();
+
+        $orders = $orderModel
+            ->where('customer_id', $userId)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+
+        return view('user/orders', ['orders' => $orders]);
+    }
 }
+

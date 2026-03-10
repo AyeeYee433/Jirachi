@@ -40,3 +40,5 @@ $routes->get('/productReceipt', 'Users::productReceipt');
 $routes->get('admin/products/add', 'Admin::productForm');
 $routes->get('admin/products/edit/(:num)', 'Admin::productForm/$1');
 $routes->post('admin/products/save', 'Admin::saveProduct');
+
+$routes->get('/myOrders', 'Users::orders');

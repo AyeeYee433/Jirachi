@@ -18,6 +18,7 @@
       <?php if ($session->has('user')): ?>
         <a href="#" role="button" onclick="confirmLogout(event)" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Logout</a>
         <a href="/cart" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Cart</a>
+        <a href="/myOrders" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">My Orders</a>
       <?php else: ?>
         <a href="/login" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Login</a>
         <a href="/signUp" class="px-4 text-[var(--primary-accent)] hover:text-[var(--primary-hover)]">Sign Up</a>
